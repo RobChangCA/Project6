@@ -18,3 +18,10 @@
   flex-direction: column;
   margin: 50px;
   color: white; }
+
+.cssOutput__field {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1rem;
+  height: 500px; }
