@@ -78,6 +78,7 @@ class App extends React.Component{
 					final__scale: `${firebaseItem.final__scale}`,
 					final__shape: `${firebaseItem.final__shape}`,
 				}
+				newKeyframe.id=key;
 				newKeyframeArray.push(newKeyframe);
 			}
 			this.setState({
@@ -99,7 +100,7 @@ class App extends React.Component{
 			dbRef.push(this.state);
 		}
 	removeItem(key) {
-		console.log(key._definition.id);
+		console.log(key._definition);
 		const itemRef = firebase.database().ref(`/animations/${key._definition.id}`);
 		itemRef.remove();
 	}
@@ -158,7 +159,7 @@ class App extends React.Component{
 
 		return(
 			<div>
-				<h1 className='title'>Animation</h1>
+				<h1 className='title'>Animation Playground</h1>
 				<div className="wrapper">
 					<section className="animationFrame">
 						<div className={css(styling.anime)}></div>
