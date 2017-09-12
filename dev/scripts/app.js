@@ -16,13 +16,13 @@ class App extends React.Component{
 			initial__width: 300,
 			initial__height: 300,
 			initial__rotation: 0,
-			initial__color: "#C44D58",
+			initial__color: "#3399FF",
 			initial__scale: 1,
 			initial__shape: 1,
 			final__width: 300,
 			final__height: 300,
 			final__rotation: 0,
-			final__color: "#C44D58",
+			final__color: "#3399FF",
 			final__scale: 1,
 			final__shape: 1,
 			storedKeyframes: [],
@@ -160,10 +160,36 @@ class App extends React.Component{
 		return(
 			<div>
 				<h1 className='title'>Animation Playground</h1>
-				<div className="wrapper">
-					<section className="animationFrame">
-						<div className={css(styling.anime)}></div>
-					</section>
+				<div className="wrapper mainFlex">
+					<div className='cssWrap'>
+						<section className="animationFrame">
+							<div className={css(styling.anime)}></div>
+						</section>
+						<p className='cssOutput__field'>
+							<h2 className="cssTitle">CSS:</h2>
+							{`@keyframes AnimationName{ 0%{
+							height: ${this.state.initial__height}px;
+							width: ${this.state.initial__width}px;
+							transform: scale(${this.state.initial__scale}) rotate(${this.state.initial__rotation}deg);
+							background: ${this.state.initial__color};
+							border-radius: ${this.state.initial__shape}%;
+							}
+							50%{
+								height: ${this.state.final__height}px;
+								width: ${this.state.final__width}px;
+								transform: scale(${this.state.final__scale}) rotate(${this.state.final__rotation}deg);
+								background: ${this.state.final__color};
+								border-radius: ${this.state.final__shape}%;
+							},
+							100%{
+								height: ${this.state.initial__height}px;
+								width: ${this.state.initial__width}px;
+								transform: scale(${this.state.initial__scale}) rotate(${this.state.initial__rotation}deg);
+								background: ${this.state.initial__color};
+								border-radius: ${this.state.initial__shape}%;
+							}}`}
+						</p>
+					</div>
 					<section className="inputControl">
 						<form className="initial__input">
 							<label htmlFor="duration">Duration</label>
@@ -204,10 +230,12 @@ class App extends React.Component{
 								value={this.state.initial__rotation}
 							/>
 							<label htmlFor="initial__color">Starting Color</label>
-							<select name="initial__color" id="initial__color" onChange={this.handleChange}>
-								<option value="#C44D58">Red</option>
-								<option value="#C7F464">green</option>
-								<option value="#4ECDC4">blue</option>
+							<select name="initial__color" id="initial__color" className="colors" onChange={this.handleChange}>
+								<option value="#3399FF">blue</option>
+								<option value="#FEAE2D">yellow</option>
+								<option value="#FF3333">red</option>
+								<option value="#00CC99">green</option>
+								<option value="#9A12B3">purple</option>
 							</select>
 							<label htmlFor="initial__scale">Starting Scale</label>
 							<input 
@@ -259,10 +287,13 @@ class App extends React.Component{
 								onChange={this.handleChange} 
 							/>
 							<label htmlFor="final__color">Final Color</label>
-							<select name="final__color" id="final__color" onChange={this.handleChange}>
-								<option value="#C44D58">Red</option>
-								<option value="#C7F464">green</option>
-								<option value="#4ECDC4">blue</option>
+							<select name="final__color" id="final__color" className="colors" onChange={this.handleChange}>
+								<option value="#3399FF">blue</option>
+								<option value="#FEAE2D">yellow</option>
+								<option value="#FF3333">red</option>
+								<option value="#00CC99">green</option>
+								<option value="#9A12B3">purple</option>
+								
 							</select>
 							<label htmlFor="final__scale">Final scale</label>
 							<input 
@@ -284,48 +315,29 @@ class App extends React.Component{
 								value={this.state.final__shape}
 								onChange={this.handleChange} 
 							/>
+							<button className='save' onClick={this.fbUpload.bind(this)}>Save Animation</button> 
 						</form>
-						<button onClick={this.fbUpload.bind(this)}>Save Animation</button>
 					</section>
 				</div>
-				<section className='cssOutput'>
-					<p className='cssOutput__field'>
-							{`@keyframes AnimationName{ 0%{
-							height: ${this.state.initial__height}px;
-							width: ${this.state.initial__width}px;
-							transform: scale(${this.state.initial__scale}) rotate(${this.state.initial__rotation}deg);
-							background: ${this.state.initial__color};
-							border-radius: ${this.state.initial__shape}%;
-						}
-						50%{
-							height: ${this.state.final__height}px;
-							width: ${this.state.final__width}px;
-							transform: scale(${this.state.final__scale}) rotate(${this.state.final__rotation}deg);
-							background: ${this.state.final__color};
-							border-radius: ${this.state.final__shape}%;
-						},
-						100%{
-							height: ${this.state.initial__height}px;
-							width: ${this.state.initial__width}px;
-							transform: scale(${this.state.initial__scale}) rotate(${this.state.initial__rotation}deg);
-							background: ${this.state.initial__color};
-							border-radius: ${this.state.initial__shape}%;
-						}}`}
-					</p>
-				</section>
-				<section className="animationGallery">
-						{this.state.storedKeyframes.map(keyframe=>{
-							const style =  StyleSheet.create({ 
-								keyframe
-							})
-							return(
-								<div className="animationGallery__container">
-									<div className={css(style.keyframe)}></div>
-									<button className='animationGallery__delete' onClick={() => this.removeItem(style.keyframe)}>Delete</button>
-									<button className="animationGallery__onScreen" onClick={()=> this.onScreen(style.keyframe)}>On screen</button>
-								</div>
-							)
-						})}
+					
+
+				<section className="gallery wrapper">
+					<h2 className="gallery__title">Gallery</h2>
+					<section className="animationGallery">
+					
+							{this.state.storedKeyframes.map(keyframe=>{
+								const style =  StyleSheet.create({ 
+									keyframe
+								})
+								return(
+									<div className="animationGallery__container">
+										<div className={css(style.keyframe)}></div>
+										<button className='animationGallery__delete' onClick={() => this.removeItem(style.keyframe)}>Delete</button>
+										<button className="animationGallery__onScreen" onClick={()=> this.onScreen(style.keyframe)}>On screen</button>
+									</div>
+								)
+							})}
+					</section>
 				</section>
 			</div>
 		)
