@@ -368,7 +368,7 @@ class App extends React.Component{
 							/>
 							<button className='randomAnimation' onClick={this.randomState.bind(this)}>Random</button>
 							<button className='resetAnimation' onClick={this.resetState.bind(this)}>Reset</button>
-							<button className='save' onClick={this.fbUpload.bind(this)}>Save Animation</button>
+							<button className='save' onClick={this.fbUpload.bind(this)}>Save</button>
 						</form>
 					</section>
 				</div>
