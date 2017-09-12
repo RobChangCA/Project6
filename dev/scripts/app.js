@@ -191,7 +191,7 @@ class App extends React.Component{
 						</p>
 					</div>
 					<section className="inputControl">
-						<form className="initial__input">
+						<form className="initial__input inputs">
 							<label htmlFor="duration">Duration</label>
 							<input 
 								type="range" 
@@ -232,10 +232,13 @@ class App extends React.Component{
 							<label htmlFor="initial__color">Starting Color</label>
 							<select name="initial__color" id="initial__color" className="colors" onChange={this.handleChange}>
 								<option value="#3399FF">blue</option>
-								<option value="#FEAE2D">yellow</option>
 								<option value="#FF3333">red</option>
+								<option value="#FA6900">orange</option>
+								<option value="#FEAE2D">yellow</option>
 								<option value="#00CC99">green</option>
 								<option value="#9A12B3">purple</option>
+								<option value="black">black</option>
+								<option value="white">white</option>
 							</select>
 							<label htmlFor="initial__scale">Starting Scale</label>
 							<input 
@@ -258,7 +261,7 @@ class App extends React.Component{
 								onChange={this.handleChange} 
 							/>
 						</form>
-						<form className='final__input'>
+						<form className='final__input inputs'>
 							<label htmlFor="final__height"> Final Height</label>
 							<input 
 								type="range"
@@ -289,10 +292,13 @@ class App extends React.Component{
 							<label htmlFor="final__color">Final Color</label>
 							<select name="final__color" id="final__color" className="colors" onChange={this.handleChange}>
 								<option value="#3399FF">blue</option>
-								<option value="#FEAE2D">yellow</option>
 								<option value="#FF3333">red</option>
+								<option value="#FA6900">orange</option>
+								<option value="#FEAE2D">yellow</option>
 								<option value="#00CC99">green</option>
 								<option value="#9A12B3">purple</option>
+								<option value="black">black</option>
+								<option value="white">white</option>
 								
 							</select>
 							<label htmlFor="final__scale">Final scale</label>

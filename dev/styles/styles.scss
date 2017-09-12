@@ -57,7 +57,7 @@ button{
 	margin-bottom: 20px;
 }
 
-.initial__input, .final__input{
+.inputs{
 	display: flex;
 	background: black;
 	border-radius: 15px;
@@ -86,8 +86,6 @@ button{
 	padding: 20px;
 	margin:0;
 	margin-top: 20px;
-	// width: 70%;
-	// margin: 100px auto;
 	font-size: 1rem;
 	background: black;
 	border-radius: 15px;
@@ -136,4 +134,76 @@ button{
 	left: 5px;
 	background: #191919;
 	color: #999;
+}
+
+
+@media (max-width: 1000px) {
+	.animationFrame{
+		width: 600px;
+	}
+	.cssOutput__field{
+		width: 600px;
+	}
+	.inputs{
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+
+@media (max-width: 850px) {
+	.animationFrame{
+		width: 500px;
+	}
+	.cssOutput__field{
+		width: 500px;
+	}
+}
+
+
+@media (max-width: 730px) {
+
+	.animationFrame{
+		width: 100vw;
+	}
+	.animationGallery__container{
+		height: 100px;
+	}
+	.cssOutput__field{
+		display: none;
+	}
+	.cssWrap{
+		order: 1;
+	}
+	.inputControl{
+		order: 2;
+		width: 100%;
+		border-radius: 0;
+	}
+	.inputs{
+		width: 100%;
+		border-radius: 0;
+	}
+	.mainFlex{
+		flex-direction: column;
+		align-items: center;
+	}
+	.animationGallery__delete{
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+		background: #191919; 
+		color: #999;
+	}
+	.animationGallery__onScreen{
+		position: absolute;
+		top: 5px; 
+		bottom: inherit;
+		background: #191919;
+		color: #999;
+	}
+	.animationGallery__container{
+		width: 48%;
+		height: 150px;
+	}
 }
