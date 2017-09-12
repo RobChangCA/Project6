@@ -7,24 +7,32 @@ import {
     Route, Link, NavLink } from 'react-router-dom';
 
 const dbRef = firebase.database().ref('/animations');
-
+const randomColorArray = [	 "#3399FF",
+							 "#FF3333",
+							 "#FA6900",
+							 "#FEAE2D",
+							 "#00CC99",
+							 "#9A12B3",
+							 "black",
+							 "white",
+						];
 class App extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			duration: 20,
-			initial__width: 300,
-			initial__height: 300,
-			initial__rotation: 0,
-			initial__color: "#3399FF",
-			initial__scale: 1,
-			initial__shape: 1,
-			final__width: 300,
-			final__height: 300,
-			final__rotation: 0,
-			final__color: "#3399FF",
-			final__scale: 1,
-			final__shape: 1,
+			duration: Math.floor(Math.random()*20),
+			initial__width: Math.floor(Math.random()*300),
+			initial__height: Math.floor(Math.random()*300),
+			initial__rotation: Math.floor(Math.random()*360),
+			initial__color: randomColorArray[Math.floor(Math.random()*7)],
+			initial__scale: Math.random()+.5,
+			initial__shape: Math.random(),
+			final__width: Math.floor(Math.random()*300),
+			final__height: Math.floor(Math.random()*300),
+			final__rotation: Math.floor(Math.random()*360),
+			final__color: randomColorArray[Math.floor(Math.random()*7)],
+			final__scale: Math.random()+.5,
+			final__shape: Math.random(),
 			storedKeyframes: [],
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -86,6 +94,43 @@ class App extends React.Component{
 			})
 		})
 	}
+	resetState(e){
+		e.preventDefault();
+		this.setState({
+			duration: 20,
+			initial__width: 300,
+			initial__height: 300,
+			initial__rotation: 0,
+			initial__color: "#3399FF",
+			initial__scale: 1,
+			initial__shape: 1,
+			final__width: 300,
+			final__height: 300,
+			final__rotation: 0,
+			final__color: "#3399FF",
+			final__scale: 1,
+			final__shape: 1,
+		}) 
+	}
+	randomState(e){
+		e.preventDefault();
+		this.setState({
+			duration: Math.floor(Math.random()*20)+1,
+			initial__width: Math.floor(Math.random()*300),
+			initial__height: Math.floor(Math.random()*300),
+			initial__rotation: Math.floor(Math.random()*360),
+			initial__color: randomColorArray[Math.floor(Math.random()*7)],
+			initial__scale: Math.random()+.5,
+			initial__shape: Math.floor(Math.random()*100),
+			final__width: Math.floor(Math.random()*300),
+			final__height: Math.floor(Math.random()*300),
+			final__rotation: Math.floor(Math.random()*360),
+			final__color: randomColorArray[Math.floor(Math.random()*7)],
+			final__scale: Math.random()+.5,
+			final__shape: Math.floor(Math.random()*100),
+		}) 
+	}
+			
 	handleChange(event){
 		this.setState({
 			[event.target.id] : event.target.value
@@ -230,7 +275,7 @@ class App extends React.Component{
 								value={this.state.initial__rotation}
 							/>
 							<label htmlFor="initial__color">Starting Color</label>
-							<select name="initial__color" id="initial__color" className="colors" onChange={this.handleChange}>
+							<select name="initial__color" id="initial__color" className="colors" value={this.state.initial__color} onChange={this.handleChange}>
 								<option value="#3399FF">blue</option>
 								<option value="#FF3333">red</option>
 								<option value="#FA6900">orange</option>
@@ -290,7 +335,7 @@ class App extends React.Component{
 								onChange={this.handleChange} 
 							/>
 							<label htmlFor="final__color">Final Color</label>
-							<select name="final__color" id="final__color" className="colors" onChange={this.handleChange}>
+							<select name="final__color" id="final__color" className="colors" value={this.state.final__color} onChange={this.handleChange}>
 								<option value="#3399FF">blue</option>
 								<option value="#FF3333">red</option>
 								<option value="#FA6900">orange</option>
@@ -321,7 +366,9 @@ class App extends React.Component{
 								value={this.state.final__shape}
 								onChange={this.handleChange} 
 							/>
-							<button className='save' onClick={this.fbUpload.bind(this)}>Save Animation</button> 
+							<button className='randomAnimation' onClick={this.randomState.bind(this)}>Random</button>
+							<button className='resetAnimation' onClick={this.resetState.bind(this)}>Reset</button>
+							<button className='save' onClick={this.fbUpload.bind(this)}>Save Animation</button>
 						</form>
 					</section>
 				</div>
