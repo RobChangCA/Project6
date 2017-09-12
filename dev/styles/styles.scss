@@ -1,17 +1,6 @@
 @import 'partials/variables';
 @import 'partials/reset';
 // global
-// *{
-// 	transition: all 10s;	
-// }
-// *:hover{
-// 		transform: rotate(360deg);
-// 	}
-// *{
-// 	border: 1px solid red;
-// }
-// font-family: 'Roboto', sans-serif;
-// font-family: 'Lato', sans-serif;
 html{
 	font-size: 62.5%;
 	background: #191919;
@@ -25,15 +14,12 @@ button{
 	max-width: 1000px;
 	margin: 0 auto;
 }
-
 .title{
 	margin: 0;
 	margin-bottom: 50px;
 	text-align: center;
 	font-size: 5rem;
 	color: white;
-
-
 }
 //main
 .mainFlex{
@@ -72,15 +58,14 @@ button{
 }
 .colors{
 	background: none;
-	color: white;
-		
+	color: white;	
 }
-
 //css
 .cssTitle{
 	margin-top: 0;
 }
 .cssOutput__field{
+	font-family: 'Droid Sans Mono', monospace;
 	color: #999;
 	display: block;
 	padding: 20px;
@@ -159,8 +144,6 @@ button{
 		width: 500px;
 	}
 }
-
-
 @media (max-width: 730px) {
 
 	.animationFrame{

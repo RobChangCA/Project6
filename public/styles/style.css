@@ -191,6 +191,7 @@ button {
   margin-top: 0; }
 
 .cssOutput__field {
+  font-family: 'Droid Sans Mono', monospace;
   color: #999;
   display: block;
   padding: 20px;
