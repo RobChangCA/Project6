@@ -20,7 +20,7 @@ class App extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			duration: Math.floor(Math.random()*20),
+			duration: Math.floor(Math.random()*20)+1,
 			initial__width: Math.floor(Math.random()*300),
 			initial__height: Math.floor(Math.random()*300),
 			initial__rotation: Math.floor(Math.random()*360),
