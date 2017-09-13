@@ -183,6 +183,10 @@ button {
   .inputs input, .inputs select, .inputs button {
     margin: 5px; }
 
+.colors {
+  background: none;
+  color: white; }
+
 .cssTitle {
   margin-top: 0; }
 
