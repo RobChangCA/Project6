@@ -205,6 +205,7 @@ class App extends React.Component{
 		return(
 			<div>
 				<h1 className='title'>Animation Playground</h1>
+				<p className="title__paragraph">Welcome to the Animation playground!<br />  Here you can build custom animations and use the CSS below to add it to your site.<br />  Hit save to save the animation to our firebase directory.</p>
 				<div className="wrapper mainFlex">
 					<div className='cssWrap'>
 						<section className="animationFrame">
